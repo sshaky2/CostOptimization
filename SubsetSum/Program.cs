@@ -135,105 +135,136 @@ namespace SubsetSum
             //generateSubsets(weights, 7, 15);
             //Console.WriteLine("total nodes: " + totalNodes);
 
+            #region backtracking approach
 
-            w.Clear();
-            string path = @"C:\Users\sshakya\Documents\Visual Studio 2015\Projects\SubsetSum\Data\data1.txt";
-            string[] lines = File.ReadAllLines(path);
-            foreach (var val in lines)
-            {
-                //Console.WriteLine(val);
-                w.Add(Convert.ToDouble(val));
-            }
-
-            //Random rand = new Random();
             //w.Clear();
-            //for (var i = 1; i < n; i++)
+            //string path = @"C:\Users\sshakya\Documents\Visual Studio 2015\Projects\SubsetSum\Data\data1.txt";
+            //string[] lines = File.ReadAllLines(path);
+            //foreach (var val in lines)
             //{
-            //    w.Add(rand.Next(1, 20));
+            //    //Console.WriteLine(val);
+            //    w.Add(Convert.ToDouble(val));
             //}
-            w.Sort();
 
-            //List<double> average = new List<double> {3,25,50,100,250,1024,5120,10240,20480, 30720 };//{2.5};//
-            List<double> average = new List<double> {5120};//{2.5};//
-            int lastCount = w.Count;
-            foreach (var avg in average)
+            ////Random rand = new Random();
+            ////w.Clear();
+            ////for (var i = 1; i < n; i++)
+            ////{
+            ////    w.Add(rand.Next(1, 20));
+            ////}
+            //w.Sort();
+
+            ////List<double> average = new List<double> {3,25,50,100,250,1024,5120,10240,20480, 30720 };//{2.5};//
+            //List<double> average = new List<double> {5120};//{2.5};//
+            //int lastCount = w.Count;
+            //foreach (var avg in average)
+            //{
+            //    do
+            //    {
+
+            //        lastCount = w.Count;
+            //        Console.WriteLine("For average: " + avg + " Count: " + w.Count);
+            //        m = avg;
+            //        n = w.Count - 1;
+            //        SumOfSubset(0, 0);
+            //        found = false;
+            //        Console.WriteLine("count of subset:" + subset.Count);
+            //        foreach (var number in subset)
+            //        {
+            //            Console.Write(number + ",");
+            //            var item = w.FirstOrDefault(x => x == number);
+            //            w.Remove(item);
+
+            //        }
+            //        w.Sort();
+            //        Console.WriteLine();
+            //        subset.Clear();
+            //        for (int i = 0; i < x.Length; i++)
+            //        {
+            //            x[i] = 0;
+            //        }
+            //    } while (lastCount != w.Count);
+            //}
+
+            //Console.WriteLine("Remaining numbers : Count: " + w.Count);
+            //foreach (var num in w)
+            //{
+            //    Console.WriteLine(num + " , ");
+            //}
+
+            #endregion
+
+
+            #region dynamic programming approach with 3d array
+
+            //List<int> arr = new List<int>();
+            //string path = @"C:\Users\sshakya\Documents\Visual Studio 2015\Projects\SubsetSum\Data\data1.txt";
+            //string[] lines = File.ReadAllLines(path);
+            //foreach (var val in lines)
+            //{
+            //    //Console.WriteLine(val);
+            //    arr.Add((int)(Math.Round(Convert.ToDouble(val) * 100, MidpointRounding.AwayFromZero)));
+            //}
+
+            ////List<int> arr = new List<int> {1,2,3,4,5,6,9,10,13,17,21,24,25,26,26,26,26,26,31,40};
+            //List<double> average = new List<double> { 512000 };//{2.5};//
+            //int previousCount = arr.Count;
+            //foreach (var avg in average)
+            //{
+            //    Console.WriteLine("For average: " + avg + " : ");
+            //    do
+            //    {
+            //        previousCount = arr.Count;
+            //        for (int i = 1; i <= arr.Count; ++i)
+            //        {
+            //            double sum = i* avg;
+            //            if (sum == (int) sum)
+            //            {
+            //                List<int> result = isSumPossible(arr, (int) sum, i);
+            //                if (result != null)
+            //                {
+            //                    foreach (var number in result)
+            //                    {
+            //                        Console.Write(number + " , ");
+            //                        var item = arr.FirstOrDefault(x => x == number);
+            //                        arr.Remove(item);
+
+            //                    }
+            //                    Console.WriteLine();
+            //                    break;
+            //                }
+            //            }
+            //        }
+            //    } while (previousCount != arr.Count);
+            //}
+            //Console.WriteLine("Remining numbers :");
+            //foreach (var num in arr)
+            //{
+            //    Console.WriteLine(num + " , ");
+            //}
+            #endregion
+
+            #region dp approach w 2d array
+            int[] arr1 = { 2, 3, 7, 8, 10 };
+            int breakpoint = 0;
+            for (int i = 0; i < arr1.Length; i++)
             {
-                do
+                if (arr1[i] > 5)
                 {
+                    breakpoint = i - 1;
+                }
 
-                    lastCount = w.Count;
-                    Console.WriteLine("For average: " + avg + " Count: " + w.Count);
-                    m = avg;
-                    n = w.Count - 1;
-                    SumOfSubset(0, 0);
-                    found = false;
-                    Console.WriteLine("count of subset:" + subset.Count);
-                    foreach (var number in subset)
-                    {
-                        Console.Write(number + ",");
-                        var item = w.FirstOrDefault(x => x == number);
-                        w.Remove(item);
-
-                    }
-                    w.Sort();
-                    Console.WriteLine();
-                    subset.Clear();
-                    for (int i = 0; i < x.Length; i++)
-                    {
-                        x[i] = 0;
-                    }
-                } while (lastCount != w.Count);
             }
+            Console.WriteLine(DPSubsetSum(arr1, 5, breakpoint));
+            #endregion
 
-            Console.WriteLine("Remaining numbers : Count: " + w.Count);
-            foreach (var num in w)
-            {
-                Console.WriteLine(num + " , ");
-            }
-
-            //List<int> arr = new List<int> {1,2,3,4,5,6,9,10,13,17,21,24,25,26,26,26,26,26,31,40};
-            List<int> arr = new List<int> { 1, 2, 3, 4, 5, 6, 7,8,9,10,11};
-            int previousCount = arr.Count;
-            foreach (var avg in average)
-            {
-                Console.WriteLine("For average: " + avg + " : ");
-                do
-                {
-                    previousCount = arr.Count;
-                    for (int i = 1; i <= arr.Count; ++i)
-                    {
-                        double sum = i* avg;
-                        if (sum == (int) sum)
-                        {
-                            List<int> result = isSumPossible(arr, (int) sum, i);
-                            if (result != null)
-                            {
-                                foreach (var number in result)
-                                {
-                                    Console.Write(number + " , ");
-                                    var item = arr.FirstOrDefault(x => x == number);
-                                    arr.Remove(item);
-
-                                }
-                                Console.WriteLine();
-                                break;
-                            }
-                        }
-                    }
-                } while (previousCount != arr.Count);
-            }
-            Console.WriteLine("Remining numbers :");
-            foreach (var num in arr)
-            {
-                Console.WriteLine(num + " , ");
-            }
 
         }
 
 
         private static List<int> isSumPossible(List<int> arr, int sum, int count)
         {
-            bool[,,] memo = new bool[arr.Count + 1, sum + 1, count + 1];
+            bool[,,] memo = new bool[arr.Count + 1, sum + 1 , count + 1];
             memo[0, 0, 0] = true;
 
             for (int m = 1; m <= arr.Count; ++m)
@@ -275,6 +306,53 @@ namespace SubsetSum
                 i--;
             }
             return list;
+        }
+
+        public static bool DPSubsetSum(int[] input, int total, int breakPoint)
+        {
+            bool[,] T = new bool[input.Length + 1, total + 1];
+            for (int i = 0; i <= input.Length; i++)
+            {
+                T[i, 0] = true;
+            }
+
+            for (int i = 1; i <= input.Length; i++)
+            {
+                for (int j = 1; j <= total; j++)
+                {
+                    if (j - input[i - 1] >= 0)
+                    {
+                        T[i, j] = T[i - 1, j] || T[i - 1, j - input[i - 1]];
+                    }
+                    else
+                    {
+                        T[i, j] = T[i - 1, j];
+                    }
+                }
+            }
+            List<int> result = new List<int>();
+            int x = breakPoint;
+            int y = total;
+
+            while (x > 0 && y > 0)
+            {
+                if (T[x, y] && T[x - 1, y])
+                {
+                    result.Add(input[x-2]);
+                    x--;
+                }
+                else
+                {
+                   
+                    y = y - input[x - 1];
+                    x--;
+                }
+            }
+
+          
+            
+
+            return T[input.Length, total];
         }
     }
 }
