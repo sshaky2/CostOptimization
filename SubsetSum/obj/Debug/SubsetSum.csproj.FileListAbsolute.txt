@@ -1,6 +1,0 @@
-c:\users\sshakya\documents\visual studio 2015\Projects\SubsetSum\SubsetSum\bin\Debug\SubsetSum.exe.config
-c:\users\sshakya\documents\visual studio 2015\Projects\SubsetSum\SubsetSum\bin\Debug\SubsetSum.exe
-c:\users\sshakya\documents\visual studio 2015\Projects\SubsetSum\SubsetSum\bin\Debug\SubsetSum.pdb
-c:\users\sshakya\documents\visual studio 2015\Projects\SubsetSum\SubsetSum\obj\Debug\SubsetSum.exe
-c:\users\sshakya\documents\visual studio 2015\Projects\SubsetSum\SubsetSum\obj\Debug\SubsetSum.pdb
-c:\users\sshakya\documents\visual studio 2015\Projects\SubsetSum\SubsetSum\obj\Debug\SubsetSum.csprojResolveAssemblyReference.cache
